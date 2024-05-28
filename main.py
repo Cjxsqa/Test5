@@ -183,4 +183,4 @@ print(rr.text)
 #rt = requests.get(pr)
 
 RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('1080')
-os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)} -vf transpose=1 -vcodec libx264 -acodec copy -g 30 -f flv '{upload_url}'")
+os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/5aud-w7hc-bqy1-tvb7-5yzw -vcodec copy -acodec copy '{upload_url}'")
