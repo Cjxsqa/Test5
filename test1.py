@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-
 options = Options()
 options.add_argument('--headless=new')
 options.add_argument('--no-sandbox')
