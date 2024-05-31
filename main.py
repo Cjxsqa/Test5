@@ -171,7 +171,11 @@ print(broadcastid)
 #dat ={'should_send_notifications': 1}
 
 rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+
+
+#rr = session.post(f"https://www.instagram.com/api/v1/live/18051720028639043/end_broadcast/")
 print(rr.text)
+#print(rr.text)
 
 
 
@@ -201,4 +205,5 @@ print(rr.text)
 
 
 RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('1080')
-os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/5aud-w7hc-bqy1-tvb7-5yzw -vcodec copy -acodec copy -f flv '{upload_url}'")
+
+os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)-1} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -f flv '{upload_url}'")
