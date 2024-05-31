@@ -210,4 +210,4 @@ print("RESOLTUOOMG : ", RES)
 print(int(RES)-1)
 print(pr)
 
-os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -vcodec libx264 -acodec aac -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v:6 -map 0:a:1 '{upload_url}'")
+os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v:6 -map 0:a:1 '{upload_url}'")
