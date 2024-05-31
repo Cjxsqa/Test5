@@ -157,7 +157,7 @@ data = {
 
 
 res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
-p6 = res.text
+p6 = res.json()
 print(p6)
 broadcastid = p6['broadcast_id']
 upload_url = p6['upload_url']
