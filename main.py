@@ -210,4 +210,5 @@ print("RESOLTUOOMG : ", RES)
 print(int(RES)-1)
 print(pr)
 #os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)-1} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -f flv '{upload_url}'")
-os.system(f"ffmpeg -re -i '{pr}' -map 0:p:6} -vcodec copy -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v -map 0:a '{upload_url}'")
+
+os.system(f"ffmpeg -re -i '{pr}' -map 0:p:6 -vcodec copy -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v -map 0:a '{upload_url}'")
