@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': 'eDjt2ZBPJR4',
+    'videoId': '96zVh3xpha0',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -156,13 +156,13 @@ data = {
 }
 
 
-res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
-p6 = res.json()
-print(p6)
-broadcastid = p6['broadcast_id']
-upload_url = p6['upload_url']
-print(upload_url)
-print(broadcastid)
+#res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
+#p6 = res.json()
+#print(p6)
+#broadcastid = p6['broadcast_id']
+#upload_url = p6['upload_url']
+#print(upload_url)
+#print(broadcastid)
 
 
 
@@ -170,11 +170,11 @@ print(broadcastid)
 
 #dat ={'should_send_notifications': 1}
 
-rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+#rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
 
 
 #rr = session.post(f"https://www.instagram.com/api/v1/live/18051720028639043/end_broadcast/")
-print(rr.text)
+#print(rr.text)
 #print(rr.text)
 
 
@@ -206,4 +206,8 @@ print(rr.text)
 
 RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('1080')
 
-os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)-1} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -f flv '{upload_url}'")
+print("RESOLTUOOMG : ", RES)
+print(int(RES)-1)
+print(pr)
+#os.system(f"ffmpeg -rtbufsize 1G -re -i '{pr}' -map 0:p:{int(RES)-1} -vf transpose=1 -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{pr}' -map 0:p:6} -vcodec copy -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v -map 0:a '{upload_url}'")
