@@ -2,6 +2,7 @@ import requests
 import re
 import json
 import os
+
 cookies = {
     'PREF': 'hl=en&tz=UTC',
     'SOCS': 'CAI',
