@@ -159,13 +159,13 @@ data = {
 }
 
 
-res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
-p6 = res.json()
-print(p6)
-broadcastid = p6['broadcast_id']
-upload_url = p6['upload_url']
-print(upload_url)
-print(broadcastid)
+#res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
+#p6 = res.json()
+#print(p6)
+#broadcastid = p6['broadcast_id']
+#upload_url = p6['upload_url']
+#print(upload_url)
+#print(broadcastid)
 
 
 
@@ -173,11 +173,11 @@ print(broadcastid)
 
 #dat ={'should_send_notifications': 1}
 
-rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+#rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
 
 
 #rr = session.post(f"https://www.instagram.com/api/v1/live/18051720028639043/end_broadcast/")
-print(rr.text)
+#print(rr.text)
 #print(rr.text)
 
 
@@ -207,7 +207,7 @@ print(rr.text)
 
 
 
-RES= re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('1080')
+RES= re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('720')
 
 print("RESOLTUOOMG : ", RES)
 prin = int(RES)
@@ -225,4 +225,5 @@ print(pr)
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1\" -threads 8 -map 0:p:{prin} -c:v libx264 -b:v 5000k -acodec copy -f flv '{upload_url}'")
 
-os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 8 -map 0:p:{prin} -b:v 10000k -acodec copy -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
+
+os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -map 0:p:{prin} -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -crf 0 -b:v 8000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
