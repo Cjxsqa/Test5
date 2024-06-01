@@ -206,7 +206,7 @@ print(rr.text)
 
 
 
-RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('420')
+RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('480')
 
 print("RESOLTUOOMG : ", RES)
 prin = int(RES)
