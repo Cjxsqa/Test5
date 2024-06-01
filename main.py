@@ -54,9 +54,10 @@ response = requests.post(
     json=json_data,
 )
 
-pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
+#pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
 
-#pr = response.json()['streamingData']["adaptiveFormats"]
+#
+# = response.json()['streamingData']["adaptiveFormats"]
 #l = []
 #for __ in pr:
 #    if "1080p" in str(__) and "mp4" in str(__):
@@ -137,10 +138,10 @@ session.headers = headers
 #print(session.headers)
 #session.headers.update({"x-csrftoken": f"{csrf}"})
 
-params = {
-    'target_user_id': f'{id}',
-    'hl': 'en',
-}
+#params = {
+#    'target_user_id': f'{id}',
+#    'hl': 'en',
+#}
 #print(session.headers)
 #session.cookies.update({"wd": "1280x720", "locale": "en_US", })
 #print(session.cookies)
