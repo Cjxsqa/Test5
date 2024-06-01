@@ -206,7 +206,7 @@ print(rr.text)
 
 
 
-RES = re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('480')
+RES= re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('480')
 
 print("RESOLTUOOMG : ", RES)
 prin = int(RES)
@@ -216,6 +216,8 @@ print(pr)
 
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
+
+
 
 
 
