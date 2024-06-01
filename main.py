@@ -148,8 +148,8 @@ params = {
 data = {
     'broadcast_message': 'Test5',
     'internal_only': 'false',
-    'preview_height': '1280',
-    'preview_width': '720',
+    'preview_height': '854',
+    'preview_width': '480',
     'source_type': '5',
     'broadcast_type': 'RTMP',
     'visibility': '0',
