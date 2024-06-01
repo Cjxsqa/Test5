@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': '3SScPjmeJ9w',
+    'videoId': 'QefYcPkpLXA',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -215,4 +215,5 @@ print(pr)
 #os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v:6 -map 0:a:1 '{upload_url}'")
 
 
-os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
+#os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
+os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1\" -threads 4 -map 0:p:{prin} -acodec copy -f flv '{upload_url}'")
