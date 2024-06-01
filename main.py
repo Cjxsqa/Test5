@@ -207,11 +207,11 @@ data = {
 
 
 
-RES= re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('720')
+#RES= re.findall("\d{2,}x([0-9]+)", requests.get(pr).text).index('720')
 
-print("RESOLTUOOMG : ", RES)
-prin = int(RES)
-print(pr)
+#print("RESOLTUOOMG : ", RES)
+#prin = int(RES)
+#print(pr)
 
 #os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v:6 -map 0:a:1 '{upload_url}'")
 
@@ -224,6 +224,7 @@ rrr = "https://instagram.fixm2-1.fna.fbcdn.net/hvideo-eag-ash/_nc_cat-105/v/rASc
 # Insta
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1\" -threads 8 -map 0:p:{prin} -c:v libx264 -b:v 5000k -acodec copy -f flv '{upload_url}'")
+
 
 
 
