@@ -220,10 +220,11 @@ print(pr)
 
 
 
-
+pr = "https://instagram.fixm2-1.fna.fbcdn.net/hvideo-eag-ash/_nc_cat-105/v/rAScv0pSabOlEelxrg_S-4yoxW4ghz_dIOiaV4PCmrcTL2Q/_nc_ohc-GW8_hqHKm9YQ7kNvgE-hI7i/live-dash/dash-hd/18028443248028711.mpd?ccb=2-4&ms=m_CNP&sc_t=1&oh=00_AYBkhk5wtGpDKgJlEAeTtUIJQxN9x3yudYWx4G4VH6anfA&oe=665CC606"
 # Insta
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1\" -threads 8 -map 0:p:{prin} -c:v libx264 -b:v 5000k -acodec copy -f flv '{upload_url}'")
 
 
-os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -re -i '{pr}' -map 0:p:{prin} -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -acodec copy -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
+
+os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -acodec copy -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
