@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': '96zVh3xpha0',
+    'videoId': 'hnF46TI8Y9Q',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -141,14 +141,16 @@ params = {
     'hl': 'en',
 }
 #print(session.headers)
-session.cookies.update({"wd": "1280x720", "locale": "en_US", })
+#session.cookies.update({"wd": "1280x720", "locale": "en_US", })
 #print(session.cookies)
 #response = session.get('https://www.instagram.com/api/v1/live/web_info/', params=params)
 #print(response.text)
 data = {
     'broadcast_message': 'Test5',
     'internal_only': 'false',
-    'source_type': '203',
+    'preview_height': '1920',
+    'preview_width': '1080',
+    'source_type': '5',
     'broadcast_type': 'RTMP',
     'visibility': '0',
 #    'disable_speed_test': '1',
@@ -211,4 +213,7 @@ prin = int(RES)-1
 print(pr)
 
 #os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -acodec copy -f fifo -fifo_format flv -drop_pkts_on_overflow 1 -attempt_recovery 1 -recovery_wait_time 1 -map 0:v:6 -map 0:a:1 '{upload_url}'")
-os.system(f"ffmpeg -re -i '{pr}' -vf \"transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
+
+
+
+os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
