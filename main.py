@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': 'QefYcPkpLXA',
+    'videoId': 'E3swaksCIaw',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -92,8 +92,9 @@ import json
 import requests
 session = requests.session()
 
-path = Path("cookies.json")
-Cookies = json.loads(path.read_bytes())
+#path = Path("cookies.json")
+#Cookies = json.loads(path.read_bytes())
+Cookies = {'csrftoken': '1DuErYaNsJbg4uJN5YmM6iXDXDfU5BTs', 'rur': '"EAG\\0546049028904\\0541748757227:01f7405bc3fa8afb7689aa9c87ca5b498437097de75168fa1da6ee3edc93f15a1107e3f0"', 'mid': 'Zlq3ZgALAAE3E4MskrxsJfcU7-yi', 'ds_user_id': '6049028904', 'ig_did': '14168AAB-5780-41FA-80F0-BA4F22686941', 'sessionid': '6049028904%3AxATX5Nq7jp4tI1%3A10%3AAYcy5I6b1RnJ9Vwj9VL3QiKYgt8NrYxOcEaVGPPd7A'}
 csrf = Cookies["csrftoken"]
 id = Cookies["ds_user_id"]
 
@@ -216,7 +217,6 @@ print(pr)
 
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:{prin} -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
-
 
 
 
