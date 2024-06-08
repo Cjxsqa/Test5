@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': 'ppPojqLOwh0',
+    'videoId': 'm3cVoIMMd4s',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -157,8 +157,8 @@ session.headers = headers
 data = {
     'broadcast_message': 'Test5',
     'internal_only': 'false',
-    'preview_height': '1280',
-    'preview_width': '720',
+    'preview_height': '720',
+    'preview_width': '1080',
     'source_type': '5',
     'broadcast_type': 'RTMP',
     'visibility': '0',
@@ -194,7 +194,7 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 
 
-os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:6 -b:v 10000k -acodec copy -g 30 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
+os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:6 -b:v 10000k -acodec copy -g 2 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
 #os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -map 0:p:5 -crf 0 -b:v 6000k -c:v libx264 -c:a aac -g 30 -b:a 384k -f flv '{upload_url}'")
 
 
