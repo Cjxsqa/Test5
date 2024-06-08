@@ -98,8 +98,8 @@ import json
 import requests
 session = requests.session()
 
-path = Path("cookies.json")
-Cookies = json.loads(path.read_bytes())
+#path = Path("cookies.json")
+#Cookies = json.loads(path.read_bytes())
 #Cookies = {'csrftoken': '1DuErYaNsJbg4uJN5YmM6iXDXDfU5BTs', 'rur': '"EAG\\0546049028904\\0541748757227:01f7405bc3fa8afb7689aa9c87ca5b498437097de75168fa1da6ee3edc93f15a1107e3f0"', 'mid': 'Zlq3ZgALAAE3E4MskrxsJfcU7-yi', 'ds_user_id': '6049028904', 'ig_did': '14168AAB-5780-41FA-80F0-BA4F22686941', 'sessionid': '6049028904%3AxATX5Nq7jp4tI1%3A10%3AAYcy5I6b1RnJ9Vwj9VL3QiKYgt8NrYxOcEaVGPPd7A'}
 Cookies = {'csrftoken': 'hD60PUDcPudwdXJfCrLDizAhwvFnM6fy', 'rur': '"LDC\\05451941737982\\0541749362678:01f7bec08838ecd8377b00be80c84aa81f940ec9702f26bf7dea236f64c4f5d207eae087"', 'mid': 'ZmP0cwALAAEaLxU78y0py1K_CUDL', 'ds_user_id': '51941737982', 'ig_did': 'C01E64D7-0957-4F3E-B597-66EA7FD754E1', 'sessionid': '51941737982%3AuuSYrABkxAAqLf%3A21%3AAYf4eoCJOvh8BfDgBCvABtlWv3K5b31ctAzdMKSmrw'}
 
@@ -167,13 +167,13 @@ data = {
 }
 
 
-res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
-p6 = res.json()
-print(p6)
-broadcastid = p6['broadcast_id']
-upload_url = p6['upload_url']
-print(upload_url)
-print(broadcastid)
+#res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
+#p6 = res.json()
+#print(p6)
+#broadcastid = p6['broadcast_id']
+#upload_url = p6['upload_url']
+#print(upload_url)
+#print(broadcastid)
 
 
 
@@ -181,7 +181,7 @@ print(broadcastid)
 
 #dat ={'should_send_notifications': 1}
 
-rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+#rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
 
 
 #rr = session.post(f"https://www.instagram.com/api/v1/live/18051720028639043/end_broadcast/")
