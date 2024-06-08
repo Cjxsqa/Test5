@@ -194,7 +194,7 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 
 
-os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 8 -map 0:p:6 -b:v 10000k -acodec copy -g 30 -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy '{upload_url}'")
+os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 8 -map 0:p:6 -b:v 10000k -acodec copy -g 30 -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1' -vcodec copy -acodec copy -f flv '{upload_url}'")
 #os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -map 0:p:5 -crf 0 -b:v 6000k -c:v libx264 -c:a aac -g 30 -b:a 384k -f flv '{upload_url}'")
 
 
