@@ -37,7 +37,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': 'SxOtDzZ8lYc',
+    'videoId': 'ppPojqLOwh0',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -54,7 +54,7 @@ response = requests.post(
     json=json_data,
 )
 
-#pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
+pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
 
 #
 # = response.json()['streamingData']["adaptiveFormats"]
@@ -77,7 +77,12 @@ response = requests.post(
 #os.system(f"ffmpeg -re -i '{video}' -i '{audio}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv rtmp://a.rtmp.youtube.com/live2/zvmf-1yjp-jzek-01pw-b4js -vcodec copy -acodec copy -f flv ")
 
 
-#os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -map 0:p:5 -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv \"rtmps://edgetee-upload-maa2-1.xx.fbcdn.net:443/rtmp/17936757614744903?s_bl=1&s_fbp=tir3-1&s_prp=maa2-1&s_spl=1&s_sw=0&s_tids=1&s_vt=ig&a=AbyZGAvU6xCVbZ-U\"")
+
+
+#os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -map 0:p:6 -crf 0 -b:v 10000k -c:a aac -g 30 -b:a 384k -f flv \"rtmps://edgetee-upload-maa2-1.xx.fbcdn.net:443/rtmp/17936757614744903?s_bl=1&s_fbp=tir3-1&s_prp=maa2-1&s_spl=1&s_sw=0&s_tids=1&s_vt=ig&a=AbyZGAvU6xCVbZ-U\"")
+
+
+
 
 
 #os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -map 0:p:5 -pix_fmt yuv420p -threads 4 -vb 400k -deinterlace -c:v libx264 -c:a aac -g 30 -b:a 384k -f flv \"rtmp://edgetee-upload-maa2-1.xx.fbcdn.net:443/rtmp/17936757614744903?s_bl=1&s_fbp=tir3-1&s_prp=maa2-1&s_spl=1&s_sw=0&s_tids=1&s_vt=ig&a=AbyZGAvU6xCVbZ-U\"")
@@ -96,6 +101,8 @@ session = requests.session()
 path = Path("cookies.json")
 Cookies = json.loads(path.read_bytes())
 #Cookies = {'csrftoken': '1DuErYaNsJbg4uJN5YmM6iXDXDfU5BTs', 'rur': '"EAG\\0546049028904\\0541748757227:01f7405bc3fa8afb7689aa9c87ca5b498437097de75168fa1da6ee3edc93f15a1107e3f0"', 'mid': 'Zlq3ZgALAAE3E4MskrxsJfcU7-yi', 'ds_user_id': '6049028904', 'ig_did': '14168AAB-5780-41FA-80F0-BA4F22686941', 'sessionid': '6049028904%3AxATX5Nq7jp4tI1%3A10%3AAYcy5I6b1RnJ9Vwj9VL3QiKYgt8NrYxOcEaVGPPd7A'}
+Cookies = {'csrftoken': 'hD60PUDcPudwdXJfCrLDizAhwvFnM6fy', 'rur': '"LDC\\05451941737982\\0541749362678:01f7bec08838ecd8377b00be80c84aa81f940ec9702f26bf7dea236f64c4f5d207eae087"', 'mid': 'ZmP0cwALAAEaLxU78y0py1K_CUDL', 'ds_user_id': '51941737982', 'ig_did': 'C01E64D7-0957-4F3E-B597-66EA7FD754E1', 'sessionid': '51941737982%3AuuSYrABkxAAqLf%3A21%3AAYf4eoCJOvh8BfDgBCvABtlWv3K5b31ctAzdMKSmrw'}
+
 csrf = Cookies["csrftoken"]
 id = Cookies["ds_user_id"]
 
@@ -150,8 +157,8 @@ session.headers = headers
 data = {
     'broadcast_message': 'Test5',
     'internal_only': 'false',
-    'preview_height': '854',
-    'preview_width': '480',
+    'preview_height': '1280',
+    'preview_width': '720',
     'source_type': '5',
     'broadcast_type': 'RTMP',
     'visibility': '0',
@@ -160,13 +167,13 @@ data = {
 }
 
 
-#res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
-#p6 = res.json()
-#print(p6)
-#broadcastid = p6['broadcast_id']
-#upload_url = p6['upload_url']
-#print(upload_url)
-#print(broadcastid)
+res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
+p6 = res.json()
+print(p6)
+broadcastid = p6['broadcast_id']
+upload_url = p6['upload_url']
+print(upload_url)
+print(broadcastid)
 
 
 
@@ -174,7 +181,7 @@ data = {
 
 #dat ={'should_send_notifications': 1}
 
-#rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
 
 
 #rr = session.post(f"https://www.instagram.com/api/v1/live/18051720028639043/end_broadcast/")
@@ -184,6 +191,10 @@ data = {
 
 
 
+
+
+
+os.system(f"ffmpeg -rtbufsize 256M -re -i '{pr}' -vf \"transpose=1,drawtext=fontfile=_.ttf:text='FunnyBunny - YT':fontcolor=white:fontsize=68:box=1:boxcolor=black@0.5:boxborderw=5:x=w-tw:y=h-th\" -threads 4 -map 0:p:5 -crf 0 -b:v 6000k -c:a aac -g 30 -b:a 384k -f flv '{upload_url}'")
 
 
 
@@ -221,7 +232,7 @@ data = {
 
 
 
-rrr = "https://instagram.fixm2-1.fna.fbcdn.net/hvideo-eag-ash/_nc_cat-105/v/rAScv0pSabOlEelxrg_S-4yoxW4ghz_dIOiaV4PCmrcTL2Q/_nc_ohc-GW8_hqHKm9YQ7kNvgE-hI7i/live-dash/dash-hd/18028443248028711.mpd?ccb=2-4&ms=m_CNP&sc_t=1&oh=00_AYBkhk5wtGpDKgJlEAeTtUIJQxN9x3yudYWx4G4VH6anfA&oe=665CC606"
+#rrr = "https://instagram.fixm2-1.fna.fbcdn.net/hvideo-eag-ash/_nc_cat-105/v/rAScv0pSabOlEelxrg_S-4yoxW4ghz_dIOiaV4PCmrcTL2Q/_nc_ohc-GW8_hqHKm9YQ7kNvgE-hI7i/live-dash/dash-hd/18028443248028711.mpd?ccb=2-4&ms=m_CNP&sc_t=1&oh=00_AYBkhk5wtGpDKgJlEAeTtUIJQxN9x3yudYWx4G4VH6anfA&oe=665CC606"
 # Insta
 
 #os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -http_persistent 0 -rtbufsize 256M -re -i '{pr}' -max_muxing_queue_size 9999 -vf \"transpose=1\" -threads 8 -map 0:p:{prin} -c:v libx264 -b:v 5000k -acodec copy -f flv '{upload_url}'")
@@ -229,4 +240,4 @@ rrr = "https://instagram.fixm2-1.fna.fbcdn.net/hvideo-eag-ash/_nc_cat-105/v/rASc
 
 
 
-os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -re -i '{rrr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -acodec copy -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
+#os.system(f"ffmpeg -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36\" -re -i '{rrr}' -max_muxing_queue_size 9999 -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -acodec copy -f flv 'rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1'")
