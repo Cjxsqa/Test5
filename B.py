@@ -60,10 +60,101 @@ response = requests.post(
 pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
 print(pr)
 
+from pathlib import Path
+import json
+import requests
+session = requests.session()
 
-#os.system(f"ffmpeg -probesize 20200 -analyzeduration 15000 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1,setpts=0\" -tune zerolatency -threads 4 -map 0:p:6 -b:v 10000k -acodec copy -force_key_frames \"expr:gte(t,n_forced*2)\" -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
+#path = Path("cookies.json")
+#Cookies = json.loads(path.read_bytes())
+#Cookies = {'csrftoken': '1DuErYaNsJbg4uJN5YmM6iXDXDfU5BTs', 'rur': '"EAG\\0546049028904\\0541748757227:01f7405bc3fa8afb7689aa9c87ca5b498437097de75168fa1da6ee3edc93f15a1107e3f0"', 'mid': 'Zlq3ZgALAAE3E4MskrxsJfcU7-yi', 'ds_user_id': '6049028904', 'ig_did': '14168AAB-5780-41FA-80F0-BA4F22686941', 'sessionid': '6049028904%3AxATX5Nq7jp4tI1%3A10%3AAYcy5I6b1RnJ9Vwj9VL3QiKYgt8NrYxOcEaVGPPd7A'}
+Cookies = {'csrftoken': 'hD60PUDcPudwdXJfCrLDizAhwvFnM6fy', 'rur': '"LDC\\05451941737982\\0541749362678:01f7bec08838ecd8377b00be80c84aa81f940ec9702f26bf7dea236f64c4f5d207eae087"', 'mid': 'ZmP0cwALAAEaLxU78y0py1K_CUDL', 'ds_user_id': '51941737982', 'ig_did': 'C01E64D7-0957-4F3E-B597-66EA7FD754E1', 'sessionid': '51941737982%3AuuSYrABkxAAqLf%3A21%3AAYf4eoCJOvh8BfDgBCvABtlWv3K5b31ctAzdMKSmrw'}
+
+csrf = Cookies["csrftoken"]
+id = Cookies["ds_user_id"]
+
+#print(cookies)  # save them to file as JSON
+cookies = requests.utils.cookiejar_from_dict(Cookies)
+#print(cookies)
+session.cookies.update(cookies)
+#print(session.headers) # load cookiejar to current session
+#print(session.get("https://www.instagram.com/settings/help/account_status/?hl=en").text)  # te
+#import requests
+
+
+headers = {
+    'Accept': '*/*',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'Priority': 'u=1, i',
+    'Referer': 'https://www.instagram.com/settings/help/account_status/?hl=en',
+    'sec-ch-prefers-color-scheme': 'light',
+#    'sec-ch-ua': '"Chromium";v="125", "Not.A/Brand";v="24"',
+#    'sec-ch-ua-full-version-list': '"Chromium";v="125.0.6422.60", "Not.A/Brand";v="24.0.0.0"',
+#    'sec-ch-ua-mobile': '?0',
+#    'sec-ch-ua-model': '""',
+#    'sec-ch-ua-platform': '"Linux"',
+#    'sec-ch-ua-platform-version': '"4.19.191"',
+#    'sec-fetch-dest': 'empty',
+#    'sec-fetch-mode': 'cors',
+#    'sec-fetch-site': 'same-origin',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+#    'x-asbd-id': '129477',
+    'x-csrftoken': f'{csrf}',
+    'x-ig-app-id': '936619743392459',
+#    'x-ig-app-id': '743845927482847',
+ #   'x-ig-www-claim': 'hmac.AR1_ueWdmxzSLaL-obCxlwYWH_OHumpsDQC2featPzTqv7Ay',
+    'X-Requested-With': 'XMLHttpRequest',
+}
+
+session.headers = headers
+#print(session.headers)
+#session.headers.update({"x-csrftoken": f"{csrf}"})
+
+#params = {
+#    'target_user_id': f'{id}',
+#    'hl': 'en',
+#}
+#print(session.headers)
+#session.cookies.update({"wd": "1280x720", "locale": "en_US", })
+#print(session.cookies)
+#response = session.get('https://www.instagram.com/api/v1/live/web_info/', params=params)
+#print(response.text)
+data = {
+    'broadcast_message': 'Test5',
+    'internal_only': 'false',
+    'preview_height': '720',
+    'preview_width': '1080',
+    'source_type': '5',
+    'broadcast_type': 'RTMP',
+    'visibility': '0',
+#    'disable_speed_test': '1',
+#    'is_premium': '1'
+}
+
+
+res = session.post("https://www.instagram.com/api/v1/live/create/", params={'hl': 'en'}, data=data)
+p6 = res.json()
+print(p6)
+broadcastid = p6['broadcast_id']
+upload_url = p6['upload_url']
+print(upload_url)
+print(broadcastid)
 
 
 
 
-os.system(f"ffmpeg -probesize 20200 -analyzeduration 15000 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:6 -b:v 10000k -acodec copy -preset ultrafast -tune zero_latency -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
+
+#dat ={'should_send_notifications': 1}
+
+rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/", data={'should_send_notifications': 1})
+
+
+
+#os.system(f"ffmpeg -probesize 200 -analyzeduration 100 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1,setpts=0\" -tune zerolatency -threads 4 -map 0:p:6 -b:v 8000k -acodec copy -g 60 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
+
+
+
+
+os.system(f"ffmpeg -probesize 200 -analyzeduration 100 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:6 -b:v 8000k -acodec copy -preset ultrafast -tune zero_latency -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -preset ultrafast -tune zero_latency -f flv '{upload_url}'")
