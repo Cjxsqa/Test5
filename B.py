@@ -159,4 +159,4 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 
 
-os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -threads 4 -map 0:p:5 -vcodec libx264 -b:v 9000k -preset ultrafast -tune zero_latency -acodec copy -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -threads 4 -map 0:p:6 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
