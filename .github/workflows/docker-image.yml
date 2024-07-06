@@ -4,7 +4,7 @@ on:
     branches: [ "main" ]
 jobs:
   stream:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - name: ffmpeg
       run: |
@@ -13,10 +13,9 @@ jobs:
            sudo apt-get update -y
            DEBIAN_FRONTEND=noninteractive sudo apt-get -y install tzdata apt-utils
            sudo apt-get install -y ffmpeg python3 python3-pip wget
-           sudo pip3 install requests
-           wget https://raw.githubusercontent.com/Cjxsqa/Test5/main/cookies.json
-           wget https://raw.githubusercontent.com/Cjxsqa/Test5/main/D.py
-           sudo python3 D.py
+           pip install requests
+           wget https://raw.githubusercontent.com/Cjxsqa/Test5/main/B.py
+           sudo python3 B.py
 
 
 
