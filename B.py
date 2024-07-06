@@ -40,7 +40,7 @@ json_data = {
             'utcOffsetMinutes': 0,
         },
     },
-    'videoId': 'FeweQREkl44',
+    'videoId': 'Bo6NF3-cq_I',
     'playbackContext': {
         'contentPlaybackContext': {
             'html5Preference': 'HTML5_PREF_WANTS',
@@ -68,7 +68,9 @@ session = requests.session()
 #path = Path("cookies.json")
 #Cookies = json.loads(path.read_bytes())
 #Cookies = {'csrftoken': '1DuErYaNsJbg4uJN5YmM6iXDXDfU5BTs', 'rur': '"EAG\\0546049028904\\0541748757227:01f7405bc3fa8afb7689aa9c87ca5b498437097de75168fa1da6ee3edc93f15a1107e3f0"', 'mid': 'Zlq3ZgALAAE3E4MskrxsJfcU7-yi', 'ds_user_id': '6049028904', 'ig_did': '14168AAB-5780-41FA-80F0-BA4F22686941', 'sessionid': '6049028904%3AxATX5Nq7jp4tI1%3A10%3AAYcy5I6b1RnJ9Vwj9VL3QiKYgt8NrYxOcEaVGPPd7A'}
-Cookies = {'csrftoken': 'hD60PUDcPudwdXJfCrLDizAhwvFnM6fy', 'rur': '"LDC\\05451941737982\\0541749362678:01f7bec08838ecd8377b00be80c84aa81f940ec9702f26bf7dea236f64c4f5d207eae087"', 'mid': 'ZmP0cwALAAEaLxU78y0py1K_CUDL', 'ds_user_id': '51941737982', 'ig_did': 'C01E64D7-0957-4F3E-B597-66EA7FD754E1', 'sessionid': '51941737982%3AuuSYrABkxAAqLf%3A21%3AAYf4eoCJOvh8BfDgBCvABtlWv3K5b31ctAzdMKSmrw'}
+Cookies = {'csrftoken': 'jV2ZJv6zdmIOA2pXGl5dv9Upmd57gVe5', 'rur': '"CCO\\05451941737982\\0541751821562:01f785ef80e85d2767ffef3b27a89dd287eb5709861d683e408bbe998c82835d9ba3d6a8"', 'mid': 'Zol5dwALAAHjbg41JoUG6CYX74K0', 'ds_user_id': '51941737982', 'ig_did': 'D3ADD960-C5E1-4054-9147-BBA1D67EF6DB', 'sessionid': '51941737982%3ANXXMl0BAgoeTyZ%3A16%3AAYfSwsnStPaWjs3euzZNx3ZMh--livddKpbI8g95Fw'}
+
+#{'csrftoken': 'hD60PUDcPudwdXJfCrLDizAhwvFnM6fy', 'rur': '"LDC\\05451941737982\\0541749362678:01f7bec08838ecd8377b00be80c84aa81f940ec9702f26bf7dea236f64c4f5d207eae087"', 'mid': 'ZmP0cwALAAEaLxU78y0py1K_CUDL', 'ds_user_id': '51941737982', 'ig_did': 'C01E64D7-0957-4F3E-B597-66EA7FD754E1', 'sessionid': '51941737982%3AuuSYrABkxAAqLf%3A21%3AAYf4eoCJOvh8BfDgBCvABtlWv3K5b31ctAzdMKSmrw'}
 
 csrf = Cookies["csrftoken"]
 id = Cookies["ds_user_id"]
@@ -157,4 +159,4 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 
 
-os.system(f"ffmpeg -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1\" -threads 4 -map 0:p:6 -b:v 8000k -acodec copy -preset ultrafast -tune zero_latency -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1 -vcodec copy -acodec copy -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -threads 4 -map 0:p:5 -b:v 9000k -preset ultrafast -tune zero_latency -acodec copy -f flv '{upload_url}'")
