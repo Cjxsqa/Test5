@@ -160,4 +160,4 @@ hhhh = "https://fa723fc1b171.us-west-2.playback.live-video.net/api/video/v1/us-w
 
 
 
-os.system(f"ffmpeg -re -i '{hhhh}' -vf transpose=1 -threads 4 -map 0:p:0 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{hhhh}' -vf transpose=1 -threads 4 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
