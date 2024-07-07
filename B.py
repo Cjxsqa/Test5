@@ -57,8 +57,8 @@ response = requests.post(
     json=json_data,
 )
 
-pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
-print(pr)
+#pr = json.loads(response.text)["streamingData"]["hlsManifestUrl"]
+#print(pr)
 
 from pathlib import Path
 import json
@@ -132,7 +132,8 @@ heads = {
 }
 
 respe = requests.get('https://kick.com/api/v2/channels/bigiraq/livestream', headers=heads)
-llll = respe.json()["data"]["playback_url"]
+print(respe.text, respe.status_code)
+#llll = respe.json()["data"]["playback_url"]
 
 
 
