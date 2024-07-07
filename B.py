@@ -112,77 +112,35 @@ headers = {
 
 
 
-heads = {
-    'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Android WebView";v="126"',
-    'x-app-version': '39.7.8',
-    'sec-ch-ua-mobile': '?1',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 14; V2311 Build/UP1A.231005.007_MOD1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/126.0.6478.134 Mobile Safari/537.36',
-    'content-type': 'application/json',
-    'x-app-platform': 'Android',
-    'accept': 'application/json, text/plain, */*',
-    'sec-ch-ua-platform': '"Android"',
-    'origin': 'https://localhost',
-    'x-requested-with': 'com.kick.mobile',
-    'sec-fetch-site': 'cross-site',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-dest': 'empty',
-    'referer': 'https://localhost/',
-    'accept-language': 'en-IN,en-US;q=0.9,en;q=0.8',
-    'priority': 'u=1, i',
-}
+import requests
 
-respe = requests.get('https://kick.com/api/v2/channels/bigiraq/livestream', headers=heads)
-print(respe.text, respe.status_code)
-#llll = respe.json()["data"]["playback_url"]
-
-
-#import requests
-
-cookies = {
-    '__cf_bm': 'Z4AL_0zxnYQAVXHvvLmTZyTMNPyORtENRhkqEV39fOk-1720331308-1.0.1.1-o4WTdmXXLq0pFr8h4gBWDfa3pepDHENUGFr5wKjZSdOgHlheGPHxHzQe.jgwmNfiR2LU0OsnnktKjQ6Xwpm6GQ',
-    '_gcl_au': '1.1.558660930.1720331310',
-    '_ga': 'GA1.1.1730970976.1720331310',
-    '_fbp': 'fb.1.1720331310368.619783227837698936',
-    'cf_clearance': 'QK14IaZcqw3XWsA3VAbI2B0wuv1q80D5YF7Nya3ThMU-1720331310-1.0.1.1-NjERmrU_dbbsmMVMqrp8V9nOK4yqZPkCu1sc3_WiX0wXFDDWLPnVaMYqc3cJJpQ9uqD3vIRAlgVp8En6fQnOLQ',
-    'KP_UIDz-ssn': '0G3cqm16XYD2bpiLL11HFas2C6XVVAFm0wHd9my1uR3lmn82bMlPuIUzki2k2Vbck3NKRCQBaayQtBA5YeJvX9O2VzGD7xMuiy2QH8NkawXaBFcKN4bfiJBYDPk4rZDEDRTVIb5z7g5cNiWBWd610Tv8bkgrqNfxpARxPGWT',
-    'KP_UIDz': '0G3cqm16XYD2bpiLL11HFas2C6XVVAFm0wHd9my1uR3lmn82bMlPuIUzki2k2Vbck3NKRCQBaayQtBA5YeJvX9O2VzGD7xMuiy2QH8NkawXaBFcKN4bfiJBYDPk4rZDEDRTVIb5z7g5cNiWBWd610Tv8bkgrqNfxpARxPGWT',
-    '__stripe_mid': '1a1144a9-e4df-4799-98a1-6e8bf788f32e7c3861',
-    '__stripe_sid': 'e3cd659a-3a17-466b-b414-9b30f6010a80535721',
-    'AWSALBTG': 'Di4lIipYRzAORrhuGzO1Z5dU8TEpLmh7bdUjX3ijKh+FIRuw02n5VTTh7IJ6Npm2C/in+EWZWtD9n7HRo7qN3SlRTivLC09w6NjvIKOD7uq+NR7tok0fOCgjcTS4HVhUHbMJkKtn0XQGzMyE3AzpCoOo+XAwhpXAKJmUn4nKEWpC',
-    'AWSALBTGCORS': 'Di4lIipYRzAORrhuGzO1Z5dU8TEpLmh7bdUjX3ijKh+FIRuw02n5VTTh7IJ6Npm2C/in+EWZWtD9n7HRo7qN3SlRTivLC09w6NjvIKOD7uq+NR7tok0fOCgjcTS4HVhUHbMJkKtn0XQGzMyE3AzpCoOo+XAwhpXAKJmUn4nKEWpC',
-    'AWSALB': 'N87eqRs+9OlVq0TXH18pFa59OyN8fnJ1F03k5uPvifSgpgUxE+Pa0FREuWH4rTqGuJ7y+uC3P4UTHiQWQSdzfhJX44/5yS7suuB5R89BkhuvDM5B8DSdQJyELKbZ',
-    'AWSALBCORS': 'N87eqRs+9OlVq0TXH18pFa59OyN8fnJ1F03k5uPvifSgpgUxE+Pa0FREuWH4rTqGuJ7y+uC3P4UTHiQWQSdzfhJX44/5yS7suuB5R89BkhuvDM5B8DSdQJyELKbZ',
-    'XSRF-TOKEN': 'eyJpdiI6IjM0bnc2Y0dOaUFVdyttMjd1TDUyc1E9PSIsInZhbHVlIjoieExxWFM1dW5WUHIrSjBvOGhhTkg4U3FzeHhNZ2FmOGk5TEpyV1N2MXptZW5zZFJ3VlNSa2VFbU9UTE0vRHBHOXVYRUdvS1BGVmRBL0tyTjlCTFZpWkRIbXlDSTZwaWxjWlJBamhGYnY3N2VnT2J5eURzZ0twS3dySkZ6ZUtNN04iLCJtYWMiOiI3OWUyYmNiYzY3OGYxYTU5NGZhMzVjYmMyMTMwNGJiOWQ4NGU0YTcyYzE0MjQ2MDlhZjJhZjI5ZmY2YjE5MGU1IiwidGFnIjoiIn0%3D',
-    'kick_session': 'eyJpdiI6Imhma2xFRnhwVEdLNHdCYytDT0pNemc9PSIsInZhbHVlIjoiOTMxNGtZNUNzWUhibGdDNGl3QlRnc2l3MjNmNXBmVVpxV21rRkRIMHhhY0FXQ1dGajBkMnlpMEhkbnV1a2FFcmJPRTRtTmthTHB0M0NLU1BKcVdBbFFmeGhTOUpjMCtJK2VjVU44RXRIOWZaMDZVMGRYQ3VVSC81Mjc2L3pOc24iLCJtYWMiOiJhZjY3MDc1OTU0MGIxZmE3NDY3ZGZjMGYzNzM0ZjdhNjA0OTJlOTE5MmQ0Yzg2NWJlMmZhNzg0ODFlZDBkZDRlIiwidGFnIjoiIn0%3D',
-    'aeNijhCZ4cPW9hiOjfM6pzE9rJRKtFDWPoawNcKW': 'eyJpdiI6ImgzQXVDeDUyU0F5MkxqZmZ6WG9VUnc9PSIsInZhbHVlIjoicUFUV0lqMldMR0JzNFlTTlVWUjMwMGlOYjJsdlRRRmJvZ3NjY1NNOEhJVXcyd2d3YmVYejd1UGtJQm80RnU2SkVsMzkxS0NGaU94NW5SUXpZR2JJS0E4Mi9SdGVzLzc1Ni9VQS9oRFlSZUpwRkhLOURTMjRyWTZNRGI0M2NVbzd2aGJ0dVpZWG9acGE1aDhuK0dnMk45RVRNcWRyQUtWdExjeEhHZjdPVHVVQ0lrZStldzlOVTR0ajM4a1FhQ2Zaai9XRSswMmV5eVRWVlVmWmhhUFZuVFRyQXVGbkc3MGRnMlNpNWJvMWtzbWFHbzM2bDNSNlZrQTYveENrRG9OcklzT1hrK09mZkFxUmU1SS9KZTdXQzlod2c3cTVzYk01RHhtcWNORzRmeExZL0MraFNLWFRXeXJLU1BrNjIvRnc4WnM0T2Qwb3pLbjZnRnZZbnFFZTJaNkxtMy9SWlRXQ0RBcFlBcnQ2NWdqVmI4SFJEbmNyUGgxWEVrYlBpVEZPaFB2RW5WTGE3aVJ6OERscy91MHhHZE4zRi9iK0pvZjBaRDQ2OFVvNkpqZG9NWjJuS0N2eHdEVGlVL0hzbSs0ZiIsIm1hYyI6IjFmYzk0ZWYxMmRhYTg1MDY5NjE3MWFkNTY4NWE0ZGRmM2ZjNGEwNThjMTkyYzY4YzU3NDUwZDA0YWE3MDMzMDAiLCJ0YWciOiIifQ%3D%3D',
-    '_rdt_uuid': '1720331397590.0d519a22-2a6b-4240-911d-0c7cd46bf32e',
-    '_ga_JPX1B65FL2': 'GS1.1.1720331310.1.1.1720331405.60.0.0',
-    '_dd_s': 'rum=0&expire=1720332319473',
-}
-
-headers = {
+headersd = {
     'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
+    'sec-ch-ua-platform': '"Linux"',
     'dnt': '1',
-    'x-xsrf-token': 'eyJpdiI6IjM0bnc2Y0dOaUFVdyttMjd1TDUyc1E9PSIsInZhbHVlIjoieExxWFM1dW5WUHIrSjBvOGhhTkg4U3FzeHhNZ2FmOGk5TEpyV1N2MXptZW5zZFJ3VlNSa2VFbU9UTE0vRHBHOXVYRUdvS1BGVmRBL0tyTjlCTFZpWkRIbXlDSTZwaWxjWlJBamhGYnY3N2VnT2J5eURzZ0twS3dySkZ6ZUtNN04iLCJtYWMiOiI3OWUyYmNiYzY3OGYxYTU5NGZhMzVjYmMyMTMwNGJiOWQ4NGU0YTcyYzE0MjQ2MDlhZjJhZjI5ZmY2YjE5MGU1IiwidGFnIjoiIn0=',
-    'accept-language': 'en-IN',
-    'sec-ch-ua-mobile': '?1',
-    'authorization': 'Bearer eyJpdiI6IjM0bnc2Y0dOaUFVdyttMjd1TDUyc1E9PSIsInZhbHVlIjoieExxWFM1dW5WUHIrSjBvOGhhTkg4U3FzeHhNZ2FmOGk5TEpyV1N2MXptZW5zZFJ3VlNSa2VFbU9UTE0vRHBHOXVYRUdvS1BGVmRBL0tyTjlCTFZpWkRIbXlDSTZwaWxjWlJBamhGYnY3N2VnT2J5eURzZ0twS3dySkZ6ZUtNN04iLCJtYWMiOiI3OWUyYmNiYzY3OGYxYTU5NGZhMzVjYmMyMTMwNGJiOWQ4NGU0YTcyYzE0MjQ2MDlhZjJhZjI5ZmY2YjE5MGU1IiwidGFnIjoiIn0=',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36',
-    'x-socket-id': '261731.77514',
-    'accept': 'application/json, text/plain, */*',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-fetch-site': 'same-origin',
+    'sec-ch-ua-mobile': '?0',
+    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+    'content-type': 'application/json',
+    'accept': '*/*',
+    'origin': 'https://dlive.tv',
+    'sec-fetch-site': 'same-site',
     'sec-fetch-mode': 'cors',
     'sec-fetch-dest': 'empty',
-    'referer': 'https://kick.com/fousey',
-    # 'cookie': '__cf_bm=Z4AL_0zxnYQAVXHvvLmTZyTMNPyORtENRhkqEV39fOk-1720331308-1.0.1.1-o4WTdmXXLq0pFr8h4gBWDfa3pepDHENUGFr5wKjZSdOgHlheGPHxHzQe.jgwmNfiR2LU0OsnnktKjQ6Xwpm6GQ; _gcl_au=1.1.558660930.1720331310; _ga=GA1.1.1730970976.1720331310; _fbp=fb.1.1720331310368.619783227837698936; cf_clearance=QK14IaZcqw3XWsA3VAbI2B0wuv1q80D5YF7Nya3ThMU-1720331310-1.0.1.1-NjERmrU_dbbsmMVMqrp8V9nOK4yqZPkCu1sc3_WiX0wXFDDWLPnVaMYqc3cJJpQ9uqD3vIRAlgVp8En6fQnOLQ; KP_UIDz-ssn=0G3cqm16XYD2bpiLL11HFas2C6XVVAFm0wHd9my1uR3lmn82bMlPuIUzki2k2Vbck3NKRCQBaayQtBA5YeJvX9O2VzGD7xMuiy2QH8NkawXaBFcKN4bfiJBYDPk4rZDEDRTVIb5z7g5cNiWBWd610Tv8bkgrqNfxpARxPGWT; KP_UIDz=0G3cqm16XYD2bpiLL11HFas2C6XVVAFm0wHd9my1uR3lmn82bMlPuIUzki2k2Vbck3NKRCQBaayQtBA5YeJvX9O2VzGD7xMuiy2QH8NkawXaBFcKN4bfiJBYDPk4rZDEDRTVIb5z7g5cNiWBWd610Tv8bkgrqNfxpARxPGWT; __stripe_mid=1a1144a9-e4df-4799-98a1-6e8bf788f32e7c3861; __stripe_sid=e3cd659a-3a17-466b-b414-9b30f6010a80535721; AWSALBTG=Di4lIipYRzAORrhuGzO1Z5dU8TEpLmh7bdUjX3ijKh+FIRuw02n5VTTh7IJ6Npm2C/in+EWZWtD9n7HRo7qN3SlRTivLC09w6NjvIKOD7uq+NR7tok0fOCgjcTS4HVhUHbMJkKtn0XQGzMyE3AzpCoOo+XAwhpXAKJmUn4nKEWpC; AWSALBTGCORS=Di4lIipYRzAORrhuGzO1Z5dU8TEpLmh7bdUjX3ijKh+FIRuw02n5VTTh7IJ6Npm2C/in+EWZWtD9n7HRo7qN3SlRTivLC09w6NjvIKOD7uq+NR7tok0fOCgjcTS4HVhUHbMJkKtn0XQGzMyE3AzpCoOo+XAwhpXAKJmUn4nKEWpC; AWSALB=N87eqRs+9OlVq0TXH18pFa59OyN8fnJ1F03k5uPvifSgpgUxE+Pa0FREuWH4rTqGuJ7y+uC3P4UTHiQWQSdzfhJX44/5yS7suuB5R89BkhuvDM5B8DSdQJyELKbZ; AWSALBCORS=N87eqRs+9OlVq0TXH18pFa59OyN8fnJ1F03k5uPvifSgpgUxE+Pa0FREuWH4rTqGuJ7y+uC3P4UTHiQWQSdzfhJX44/5yS7suuB5R89BkhuvDM5B8DSdQJyELKbZ; XSRF-TOKEN=eyJpdiI6IjM0bnc2Y0dOaUFVdyttMjd1TDUyc1E9PSIsInZhbHVlIjoieExxWFM1dW5WUHIrSjBvOGhhTkg4U3FzeHhNZ2FmOGk5TEpyV1N2MXptZW5zZFJ3VlNSa2VFbU9UTE0vRHBHOXVYRUdvS1BGVmRBL0tyTjlCTFZpWkRIbXlDSTZwaWxjWlJBamhGYnY3N2VnT2J5eURzZ0twS3dySkZ6ZUtNN04iLCJtYWMiOiI3OWUyYmNiYzY3OGYxYTU5NGZhMzVjYmMyMTMwNGJiOWQ4NGU0YTcyYzE0MjQ2MDlhZjJhZjI5ZmY2YjE5MGU1IiwidGFnIjoiIn0%3D; kick_session=eyJpdiI6Imhma2xFRnhwVEdLNHdCYytDT0pNemc9PSIsInZhbHVlIjoiOTMxNGtZNUNzWUhibGdDNGl3QlRnc2l3MjNmNXBmVVpxV21rRkRIMHhhY0FXQ1dGajBkMnlpMEhkbnV1a2FFcmJPRTRtTmthTHB0M0NLU1BKcVdBbFFmeGhTOUpjMCtJK2VjVU44RXRIOWZaMDZVMGRYQ3VVSC81Mjc2L3pOc24iLCJtYWMiOiJhZjY3MDc1OTU0MGIxZmE3NDY3ZGZjMGYzNzM0ZjdhNjA0OTJlOTE5MmQ0Yzg2NWJlMmZhNzg0ODFlZDBkZDRlIiwidGFnIjoiIn0%3D; aeNijhCZ4cPW9hiOjfM6pzE9rJRKtFDWPoawNcKW=eyJpdiI6ImgzQXVDeDUyU0F5MkxqZmZ6WG9VUnc9PSIsInZhbHVlIjoicUFUV0lqMldMR0JzNFlTTlVWUjMwMGlOYjJsdlRRRmJvZ3NjY1NNOEhJVXcyd2d3YmVYejd1UGtJQm80RnU2SkVsMzkxS0NGaU94NW5SUXpZR2JJS0E4Mi9SdGVzLzc1Ni9VQS9oRFlSZUpwRkhLOURTMjRyWTZNRGI0M2NVbzd2aGJ0dVpZWG9acGE1aDhuK0dnMk45RVRNcWRyQUtWdExjeEhHZjdPVHVVQ0lrZStldzlOVTR0ajM4a1FhQ2Zaai9XRSswMmV5eVRWVlVmWmhhUFZuVFRyQXVGbkc3MGRnMlNpNWJvMWtzbWFHbzM2bDNSNlZrQTYveENrRG9OcklzT1hrK09mZkFxUmU1SS9KZTdXQzlod2c3cTVzYk01RHhtcWNORzRmeExZL0MraFNLWFRXeXJLU1BrNjIvRnc4WnM0T2Qwb3pLbjZnRnZZbnFFZTJaNkxtMy9SWlRXQ0RBcFlBcnQ2NWdqVmI4SFJEbmNyUGgxWEVrYlBpVEZPaFB2RW5WTGE3aVJ6OERscy91MHhHZE4zRi9iK0pvZjBaRDQ2OFVvNkpqZG9NWjJuS0N2eHdEVGlVL0hzbSs0ZiIsIm1hYyI6IjFmYzk0ZWYxMmRhYTg1MDY5NjE3MWFkNTY4NWE0ZGRmM2ZjNGEwNThjMTkyYzY4YzU3NDUwZDA0YWE3MDMzMDAiLCJ0YWciOiIifQ%3D%3D; _rdt_uuid=1720331397590.0d519a22-2a6b-4240-911d-0c7cd46bf32e; _ga_JPX1B65FL2=GS1.1.1720331310.1.1.1720331405.60.0.0; _dd_s=rum=0&expire=1720332319473',
+    'referer': 'https://dlive.tv/',
+    'accept-language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7',
     'priority': 'u=1, i',
 }
 
-response = requests.get('https://kick.com/api/v2/channels/fousey/livestream', cookies=cookies, headers=headers)
+json_dataaa = {
+    'playlisturi': 'https://livestreamb.prdv3.dlivecdn.com/dlive-05900794/1720270925/src/live.m3u8',
+}
 
+responseZ = requests.post('https://live.prd.dlive.tv/hls/sign/url', headers=headersd, json=json_dataaa)
 
-print(response.text)
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+#data = '{"playlisturi":"https://livestreamb.prdv3.dlivecdn.com/dlive-05900794/1720270925/src/live.m3u8"}'
+#response = requests.post('https://live.prd.dlive.tv/hls/sign/url', headers=headers, data=data)
 
 
 
@@ -236,4 +194,4 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 
 
-os.system(f"ffmpeg -re -i '{llll}' -vf transpose=1 -threads 4 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{responseZ}' -vf transpose=1 -threads 4 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
