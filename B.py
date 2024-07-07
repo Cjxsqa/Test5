@@ -131,7 +131,7 @@ heads = {
     'priority': 'u=1, i',
 }
 
-respe = requests.get('https://kick.com/api/v2/channels/bigiraq/livestream', headers=headers)
+respe = requests.get('https://kick.com/api/v2/channels/bigiraq/livestream', headers=heads)
 llll = respe.json()["data"]["playback_url"]
 
 
