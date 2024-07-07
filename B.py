@@ -156,7 +156,8 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 #os.system(f"ffmpeg -probesize 200 -analyzeduration 100 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1,setpts=0\" -tune zerolatency -threads 4 -map 0:p:6 -b:v 8000k -acodec copy -g 60 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
 
+hhhh = "https://fa723fc1b171.us-west-2.playback.live-video.net/api/video/v1/us-west-2.196233775518.channel.uJXcF39rPp9m.m3u8?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJhd3M6Y2hhbm5lbC1hcm4iOiJhcm46YXdzOml2czp1cy13ZXN0LTI6MTk2MjMzNzc1NTE4OmNoYW5uZWwvdUpYY0YzOXJQcDltIiwiYXdzOmFjY2Vzcy1jb250cm9sLWFsbG93LW9yaWdpbiI6Imh0dHBzOi8va2ljay5jb20saHR0cHM6Ly9wbGF5ZXIua2ljay5jb20saHR0cHM6Ly9hZG1pbi5raWNrLmNvbSxodHRwczovL3d3dy5nc3RhdGljLmNvbSxodHRwczovLyoua2ljay5saXZlLGh0dHBzOi8vYmV0YS5raWNrLmNvbSIsImF3czpzdHJpY3Qtb3JpZ2luLWVuZm9yY2VtZW50IjpmYWxzZSwiZXhwIjoxNzIwMzI2Mzk0fQ.kIiZGzDOy2shuDSQSVfHHOGP29ZKFyAvDlB5uD64MwUUyk5k4kL_-9eJqWfYEHjxhQtYhTjQmQOw981ghrWTUBLzaNuKMBqXkUaCFrgB5K46fnIGuq1oO2AI_qnrzjqU"
 
 
 
-os.system(f"ffmpeg -re -i '{pr}' -vf transpose=1 -threads 4 -map 0:p:6 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{hhhh}' -vf transpose=1 -threads 4 -map 0:p:0 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
