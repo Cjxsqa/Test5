@@ -110,6 +110,32 @@ headers = {
     'X-Requested-With': 'XMLHttpRequest',
 }
 
+
+
+heads = {
+    'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Android WebView";v="126"',
+    'x-app-version': '39.7.8',
+    'sec-ch-ua-mobile': '?1',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 14; V2311 Build/UP1A.231005.007_MOD1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/126.0.6478.134 Mobile Safari/537.36',
+    'content-type': 'application/json',
+    'x-app-platform': 'Android',
+    'accept': 'application/json, text/plain, */*',
+    'sec-ch-ua-platform': '"Android"',
+    'origin': 'https://localhost',
+    'x-requested-with': 'com.kick.mobile',
+    'sec-fetch-site': 'cross-site',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-dest': 'empty',
+    'referer': 'https://localhost/',
+    'accept-language': 'en-IN,en-US;q=0.9,en;q=0.8',
+    'priority': 'u=1, i',
+}
+
+respe = requests.get('https://kick.com/api/v2/channels/bigiraq/livestream', headers=headers)
+llll = respe.json()["data"]["playback_url"]
+
+
+
 session.headers = headers
 #print(session.headers)
 #session.headers.update({"x-csrftoken": f"{csrf}"})
@@ -126,8 +152,8 @@ session.headers = headers
 data = {
     'broadcast_message': 'Test5',
     'internal_only': 'false',
-    'preview_height': '720',
-    'preview_width': '1080',
+    'preview_height': '1080',
+    'preview_width': '1920',
     'source_type': '5',
     'broadcast_type': 'RTMP',
     'visibility': '0',
@@ -156,8 +182,8 @@ rr = session.post(f"https://www.instagram.com/api/v1/live/{broadcastid}/start/",
 
 #os.system(f"ffmpeg -probesize 200 -analyzeduration 100 -re -i '{pr}' -vf \"transpose=1,transpose=1,transpose=1,transpose=1,setpts=0\" -tune zerolatency -threads 4 -map 0:p:6 -b:v 8000k -acodec copy -g 60 -f flv rtmp://a.rtmp.youtube.com/live2/qtaa-xx6x-h99h-hjtp-1wf1")
 
-hhhh = "https://fa723fc1b171.us-west-2.playback.live-video.net/api/video/v1/us-west-2.196233775518.channel.uJXcF39rPp9m.m3u8?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJhd3M6Y2hhbm5lbC1hcm4iOiJhcm46YXdzOml2czp1cy13ZXN0LTI6MTk2MjMzNzc1NTE4OmNoYW5uZWwvdUpYY0YzOXJQcDltIiwiYXdzOmFjY2Vzcy1jb250cm9sLWFsbG93LW9yaWdpbiI6Imh0dHBzOi8va2ljay5jb20saHR0cHM6Ly9wbGF5ZXIua2ljay5jb20saHR0cHM6Ly9hZG1pbi5raWNrLmNvbSxodHRwczovL3d3dy5nc3RhdGljLmNvbSxodHRwczovLyoua2ljay5saXZlLGh0dHBzOi8vYmV0YS5raWNrLmNvbSIsImF3czpzdHJpY3Qtb3JpZ2luLWVuZm9yY2VtZW50IjpmYWxzZSwiZXhwIjoxNzIwMzI2Mzk0fQ.kIiZGzDOy2shuDSQSVfHHOGP29ZKFyAvDlB5uD64MwUUyk5k4kL_-9eJqWfYEHjxhQtYhTjQmQOw981ghrWTUBLzaNuKMBqXkUaCFrgB5K46fnIGuq1oO2AI_qnrzjqU"
+#hhhh = "https://fa723fc1b171.us-west-2.playback.live-video.net/api/video/v1/us-west-2.196233775518.channel.uJXcF39rPp9m.m3u8?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJhd3M6Y2hhbm5lbC1hcm4iOiJhcm46YXdzOml2czp1cy13ZXN0LTI6MTk2MjMzNzc1NTE4OmNoYW5uZWwvdUpYY0YzOXJQcDltIiwiYXdzOmFjY2Vzcy1jb250cm9sLWFsbG93LW9yaWdpbiI6Imh0dHBzOi8va2ljay5jb20saHR0cHM6Ly9wbGF5ZXIua2ljay5jb20saHR0cHM6Ly9hZG1pbi5raWNrLmNvbSxodHRwczovL3d3dy5nc3RhdGljLmNvbSxodHRwczovLyoua2ljay5saXZlLGh0dHBzOi8vYmV0YS5raWNrLmNvbSIsImF3czpzdHJpY3Qtb3JpZ2luLWVuZm9yY2VtZW50IjpmYWxzZSwiZXhwIjoxNzIwMzI2Mzk0fQ.kIiZGzDOy2shuDSQSVfHHOGP29ZKFyAvDlB5uD64MwUUyk5k4kL_-9eJqWfYEHjxhQtYhTjQmQOw981ghrWTUBLzaNuKMBqXkUaCFrgB5K46fnIGuq1oO2AI_qnrzjqU"
 
 
 
-os.system(f"ffmpeg -re -i '{hhhh}' -vf transpose=1 -threads 4 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
+os.system(f"ffmpeg -re -i '{llll}' -vf transpose=1 -threads 4 -vcodec libx264 -b:v 9000k -acodec copy -preset ultrafast -f flv '{upload_url}'")
