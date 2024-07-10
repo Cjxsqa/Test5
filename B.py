@@ -127,7 +127,7 @@ session.headers = headers
 #response = session.get('https://www.instagram.com/api/v1/live/web_info/', params=params)
 #print(response.text)
 data = {
-    'broadcast_message': 'Adventure night - Batman Arkham knights 🦇',
+    'broadcast_message': 'Adventure night - Batman Arkham knights 🦇 part -2',
     'internal_only': 'false',
 #    'preview_height': '1080',
 #    'preview_width': '1920',
@@ -180,7 +180,7 @@ headers = {
 }
 
 json_data = {
-    'playlisturi': 'https://livestreamc.prdv3.dlivecdn.com/funnybunny-yt/1720630047/src/live.m3u8'
+    'playlisturi': 'https://livestreamc.prdv3.dlivecdn.com/funnybunny-yt/1720630392/src/live.m3u8'
 }
 
 esponse44 = requests.post('https://live.prd.dlive.tv/hls/sign/url', headers=headers, json=json_data).text
