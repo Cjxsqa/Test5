@@ -180,7 +180,7 @@ headers = {
 }
 
 json_data = {
-    'playlisturi': 'https://livestreamb.prdv3.dlivecdn.com/funnybunny-yt/1720543344/src/live.m3u8'
+    'playlisturi': 'https://livestreamc.prdv3.dlivecdn.com/funnybunny-yt/1720630047/src/live.m3u8'
 }
 
 esponse44 = requests.post('https://live.prd.dlive.tv/hls/sign/url', headers=headers, json=json_data).text
